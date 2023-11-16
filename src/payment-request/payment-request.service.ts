@@ -5,7 +5,7 @@ import * as crypto from 'crypto';
 
 @Injectable()
 export class PaymentRequestService {
-    createPaymentRequest(body) {
+    createPaymentRequest(body: any) {
         return new Promise(async (resolve, reject) => {
             try {
                 const merchantTransactionId = body.merchantTransactionId
@@ -15,7 +15,7 @@ export class PaymentRequestService {
                     "merchantUserId": body.merchantUserId,
                     "amount": body.amount,
                     "callbackUrl": `https://localhost:3000/api/status/${merchantTransactionId}`,
-                    "mobileNumber": "8072956651S",
+                    "mobileNumber": body.mobileNumber,
                     "paymentInstrument": {
                         "type": "UPI_COLLECT",
                         "vpa": "ronaldoarun68-1@okicici"
